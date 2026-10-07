@@ -1,0 +1,1665 @@
+{
+  "info": {
+    "_postman_id": "70eef1e4-890c-42c3-a631-207dac2193fe",
+    "name": "DanceSchoolApi | v1",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "56288696",
+    "_collection_link": "https://go.postman.co/collection/56288696-70eef1e4-890c-42c3-a631-207dac2193fe?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "Auth",
+          "item": [
+            {
+              "name": "login",
+              "item": [
+                {
+                  "name": "/api/Auth/login",
+                  "request": {
+                    "auth": {
+                      "type": "bearer"
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"login\": \"admin\",\n  \"password\": \"admin123\"\n}",
+                      "options": {
+                        "raw": {
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/Auth/login",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "Auth",
+                        "login"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"login\": \"string\",\n  \"password\": \"string\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/Auth/login",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "Auth",
+                            "login"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "body": ""
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Students",
+          "item": [
+            {
+              "name": "{id}",
+              "item": [
+                {
+                  "name": "teams",
+                  "item": [
+                    {
+                      "name": "/api/Students/:id/teams",
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "text/plain"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/Students/:id/teams",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "Students",
+                            ":id",
+                            "teams"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id",
+                              "value": "0"
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "text/plain"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/Students/:id/teams",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "Students",
+                                ":id",
+                                "teams"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id",
+                                  "value": "0"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "body": "[]"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "/api/Students/:id",
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/Students/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "Students",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id",
+                          "value": "0"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "text/plain"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/Students/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "Students",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id",
+                              "value": "0"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n  \"studentId\": \"0\",\n  \"firstName\": \"string\",\n  \"lastName\": \"string\",\n  \"age\": \"0\",\n  \"phone\": \"string\",\n  \"studentTeams\": [\n    {\n      \"studentTeamId\": \"0\",\n      \"studentId\": \"-0\",\n      \"student\": null,\n      \"teamId\": \"0\",\n      \"team\": null,\n      \"subscriptions\": [\n        {\n          \"subscriptionId\": \"0\",\n          \"studentTeamId\": \"0\",\n          \"studentTeam\": null,\n          \"tariffId\": \"-0\",\n          \"tariff\": null,\n          \"purchaseDate\": \"2006-01-12T01:58:26.919Z\",\n          \"isActive\": true\n        },\n        {\n          \"subscriptionId\": \"-391484561\",\n          \"studentTeamId\": \"6261411081\",\n          \"studentTeam\": null,\n          \"tariffId\": \"-0\",\n          \"tariff\": null,\n          \"purchaseDate\": \"2015-07-20T16:47:57.396Z\",\n          \"isActive\": true\n        }\n      ]\n    },\n    {\n      \"studentTeamId\": \"-0\",\n      \"studentId\": \"0\",\n      \"student\": null,\n      \"teamId\": \"-250741300\",\n      \"team\": null,\n      \"subscriptions\": [\n        {\n          \"subscriptionId\": \"38959929\",\n          \"studentTeamId\": \"-9209\",\n          \"studentTeam\": null,\n          \"tariffId\": \"-60324378\",\n          \"tariff\": null,\n          \"purchaseDate\": \"1961-05-20T18:23:21.021Z\",\n          \"isActive\": true\n        },\n        {\n          \"subscriptionId\": \"-56485561901\",\n          \"studentTeamId\": \"-0\",\n          \"studentTeam\": null,\n          \"tariffId\": \"-0\",\n          \"tariff\": null,\n          \"purchaseDate\": \"1967-09-14T16:20:13.888Z\",\n          \"isActive\": false\n        }\n      ]\n    }\n  ]\n}"
+                    }
+                  ]
+                },
+                {
+                  "name": "/api/Students/:id",
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"studentId\": \"0\",\n  \"firstName\": \"string\",\n  \"lastName\": \"string\",\n  \"age\": \"0\",\n  \"phone\": \"string\",\n  \"studentTeams\": [\n    {\n      \"studentTeamId\": \"0\",\n      \"studentId\": \"-0\",\n      \"student\": null,\n      \"teamId\": \"0\",\n      \"team\": null,\n      \"subscriptions\": [\n        {\n          \"subscriptionId\": \"0\",\n          \"studentTeamId\": \"0\",\n          \"studentTeam\": null,\n          \"tariffId\": \"-0\",\n          \"tariff\": null,\n          \"purchaseDate\": \"2006-01-12T01:58:26.919Z\",\n          \"isActive\": true\n        },\n        {\n          \"subscriptionId\": \"-391484561\",\n          \"studentTeamId\": \"6261411081\",\n          \"studentTeam\": null,\n          \"tariffId\": \"-0\",\n          \"tariff\": null,\n          \"purchaseDate\": \"2015-07-20T16:47:57.396Z\",\n          \"isActive\": true\n        }\n      ]\n    },\n    {\n      \"studentTeamId\": \"-0\",\n      \"studentId\": \"0\",\n      \"student\": null,\n      \"teamId\": \"-250741300\",\n      \"team\": null,\n      \"subscriptions\": [\n        {\n          \"subscriptionId\": \"38959929\",\n          \"studentTeamId\": \"-9209\",\n          \"studentTeam\": null,\n          \"tariffId\": \"-60324378\",\n          \"tariff\": null,\n          \"purchaseDate\": \"1961-05-20T18:23:21.021Z\",\n          \"isActive\": true\n        },\n        {\n          \"subscriptionId\": \"-56485561901\",\n          \"studentTeamId\": \"-0\",\n          \"studentTeam\": null,\n          \"tariffId\": \"-0\",\n          \"tariff\": null,\n          \"purchaseDate\": \"1967-09-14T16:20:13.888Z\",\n          \"isActive\": false\n        }\n      ]\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/Students/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "Students",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id",
+                          "value": "0"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"studentId\": \"0\",\n  \"firstName\": \"string\",\n  \"lastName\": \"string\",\n  \"age\": \"0\",\n  \"phone\": \"string\",\n  \"studentTeams\": [\n    {\n      \"studentTeamId\": \"0\",\n      \"studentId\": \"-0\",\n      \"student\": null,\n      \"teamId\": \"0\",\n      \"team\": null,\n      \"subscriptions\": [\n        {\n          \"subscriptionId\": \"0\",\n          \"studentTeamId\": \"0\",\n          \"studentTeam\": null,\n          \"tariffId\": \"-0\",\n          \"tariff\": null,\n          \"purchaseDate\": \"2006-01-12T01:58:26.919Z\",\n          \"isActive\": true\n        },\n        {\n          \"subscriptionId\": \"-391484561\",\n          \"studentTeamId\": \"6261411081\",\n          \"studentTeam\": null,\n          \"tariffId\": \"-0\",\n          \"tariff\": null,\n          \"purchaseDate\": \"2015-07-20T16:47:57.396Z\",\n          \"isActive\": true\n        }\n      ]\n    },\n    {\n      \"studentTeamId\": \"-0\",\n      \"studentId\": \"0\",\n      \"student\": null,\n      \"teamId\": \"-250741300\",\n      \"team\": null,\n      \"subscriptions\": [\n        {\n          \"subscriptionId\": \"38959929\",\n          \"studentTeamId\": \"-9209\",\n          \"studentTeam\": null,\n          \"tariffId\": \"-60324378\",\n          \"tariff\": null,\n          \"purchaseDate\": \"1961-05-20T18:23:21.021Z\",\n          \"isActive\": true\n        },\n        {\n          \"subscriptionId\": \"-56485561901\",\n          \"studentTeamId\": \"-0\",\n          \"studentTeam\": null,\n          \"tariffId\": \"-0\",\n          \"tariff\": null,\n          \"purchaseDate\": \"1967-09-14T16:20:13.888Z\",\n          \"isActive\": false\n        }\n      ]\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/Students/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "Students",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id",
+                              "value": "0"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "body": ""
+                    }
+                  ]
+                },
+                {
+                  "name": "/api/Students/:id",
+                  "request": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/Students/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "Students",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id",
+                          "value": "0"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/Students/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "Students",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id",
+                              "value": "0"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "body": ""
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "eligible",
+              "item": [
+                {
+                  "name": "{teamId}",
+                  "item": [
+                    {
+                      "name": "/api/Students/eligible/:teamId",
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "text/plain"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/Students/eligible/:teamId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "Students",
+                            "eligible",
+                            ":teamId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "teamId",
+                              "value": "0"
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "text/plain"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/Students/eligible/:teamId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "Students",
+                                "eligible",
+                                ":teamId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "teamId",
+                                  "value": "0"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "body": "[]"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "/api/Students",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/Students",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "Students"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/Students",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "Students"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "[\n  {\n    \"studentId\": \"0\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"age\": \"-0\",\n    \"phone\": \"string\",\n    \"studentTeams\": [\n      {\n        \"studentTeamId\": \"0\",\n        \"studentId\": \"8822645876\",\n        \"student\": null,\n        \"teamId\": \"-1344070\",\n        \"team\": null,\n        \"subscriptions\": [\n          {\n            \"subscriptionId\": \"-0\",\n            \"studentTeamId\": \"0\",\n            \"studentTeam\": null,\n            \"tariffId\": \"121935\",\n            \"tariff\": null,\n            \"purchaseDate\": \"2016-04-26T15:29:53.934Z\",\n            \"isActive\": true\n          },\n          {\n            \"subscriptionId\": \"5\",\n            \"studentTeamId\": \"0\",\n            \"studentTeam\": null,\n            \"tariffId\": \"-61635487421\",\n            \"tariff\": null,\n            \"purchaseDate\": \"2020-09-25T13:08:08.941Z\",\n            \"isActive\": true\n          }\n        ]\n      },\n      {\n        \"studentTeamId\": \"-13546115287\",\n        \"studentId\": \"-34758489367\",\n        \"student\": null,\n        \"teamId\": \"0\",\n        \"team\": null,\n        \"subscriptions\": [\n          {\n            \"subscriptionId\": \"82067076724\",\n            \"studentTeamId\": \"-0\",\n            \"studentTeam\": null,\n            \"tariffId\": \"0\",\n            \"tariff\": null,\n            \"purchaseDate\": \"2020-04-30T00:26:08.986Z\",\n            \"isActive\": false\n          },\n          {\n            \"subscriptionId\": \"0\",\n            \"studentTeamId\": \"48663230\",\n            \"studentTeam\": null,\n            \"tariffId\": \"-6\",\n            \"tariff\": null,\n            \"purchaseDate\": \"2003-11-09T10:49:25.672Z\",\n            \"isActive\": false\n          }\n        ]\n      }\n    ]\n  },\n  {\n    \"studentId\": \"-0\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"age\": \"-0\",\n    \"phone\": \"string\",\n    \"studentTeams\": [\n      {\n        \"studentTeamId\": \"-0\",\n        \"studentId\": \"1\",\n        \"student\": null,\n        \"teamId\": \"-0\",\n        \"team\": null,\n        \"subscriptions\": [\n          {\n            \"subscriptionId\": \"0\",\n            \"studentTeamId\": \"0\",\n            \"studentTeam\": null,\n            \"tariffId\": \"-0\",\n            \"tariff\": null,\n            \"purchaseDate\": \"2016-04-26T15:32:21.210Z\",\n            \"isActive\": false\n          },\n          {\n            \"subscriptionId\": \"-84498693547\",\n            \"studentTeamId\": \"0\",\n            \"studentTeam\": null,\n            \"tariffId\": \"-51\",\n            \"tariff\": null,\n            \"purchaseDate\": \"2011-10-22T15:10:03.714Z\",\n            \"isActive\": true\n          }\n        ]\n      },\n      {\n        \"studentTeamId\": \"-0\",\n        \"studentId\": \"6107\",\n        \"student\": null,\n        \"teamId\": \"-0\",\n        \"team\": null,\n        \"subscriptions\": [\n          {\n            \"subscriptionId\": \"73\",\n            \"studentTeamId\": \"-0\",\n            \"studentTeam\": null,\n            \"tariffId\": \"-3\",\n            \"tariff\": null,\n            \"purchaseDate\": \"1950-03-29T18:51:12.063Z\",\n            \"isActive\": false\n          },\n          {\n            \"subscriptionId\": \"-9025\",\n            \"studentTeamId\": \"0\",\n            \"studentTeam\": null,\n            \"tariffId\": \"-1180\",\n            \"tariff\": null,\n            \"purchaseDate\": \"1987-11-14T09:35:46.993Z\",\n            \"isActive\": false\n          }\n        ]\n      }\n    ]\n  }\n]"
+                }
+              ]
+            },
+            {
+              "name": "/api/Students",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n        \"firstName\": \"Вася\",\r\n        \"lastName\": \"Петрова\",\r\n        \"age\": 20,\r\n        \"phone\": \"+79001112278\",\r\n        \"studentTeams\": []\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/Students",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "Students"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"studentId\": \"0\",\n  \"firstName\": \"string\",\n  \"lastName\": \"string\",\n  \"age\": \"0\",\n  \"phone\": \"string\",\n  \"studentTeams\": [\n    {\n      \"studentTeamId\": \"0\",\n      \"studentId\": \"-0\",\n      \"student\": null,\n      \"teamId\": \"0\",\n      \"team\": null,\n      \"subscriptions\": [\n        {\n          \"subscriptionId\": \"0\",\n          \"studentTeamId\": \"0\",\n          \"studentTeam\": null,\n          \"tariffId\": \"-0\",\n          \"tariff\": null,\n          \"purchaseDate\": \"2006-01-12T01:58:26.919Z\",\n          \"isActive\": true\n        },\n        {\n          \"subscriptionId\": \"-391484561\",\n          \"studentTeamId\": \"6261411081\",\n          \"studentTeam\": null,\n          \"tariffId\": \"-0\",\n          \"tariff\": null,\n          \"purchaseDate\": \"2015-07-20T16:47:57.396Z\",\n          \"isActive\": true\n        }\n      ]\n    },\n    {\n      \"studentTeamId\": \"-0\",\n      \"studentId\": \"0\",\n      \"student\": null,\n      \"teamId\": \"-250741300\",\n      \"team\": null,\n      \"subscriptions\": [\n        {\n          \"subscriptionId\": \"38959929\",\n          \"studentTeamId\": \"-9209\",\n          \"studentTeam\": null,\n          \"tariffId\": \"-60324378\",\n          \"tariff\": null,\n          \"purchaseDate\": \"1961-05-20T18:23:21.021Z\",\n          \"isActive\": true\n        },\n        {\n          \"subscriptionId\": \"-56485561901\",\n          \"studentTeamId\": \"-0\",\n          \"studentTeam\": null,\n          \"tariffId\": \"-0\",\n          \"tariff\": null,\n          \"purchaseDate\": \"1967-09-14T16:20:13.888Z\",\n          \"isActive\": false\n        }\n      ]\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/Students",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "Students"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n  \"studentId\": \"0\",\n  \"firstName\": \"string\",\n  \"lastName\": \"string\",\n  \"age\": \"0\",\n  \"phone\": \"string\",\n  \"studentTeams\": [\n    {\n      \"studentTeamId\": \"0\",\n      \"studentId\": \"-0\",\n      \"student\": null,\n      \"teamId\": \"0\",\n      \"team\": null,\n      \"subscriptions\": [\n        {\n          \"subscriptionId\": \"0\",\n          \"studentTeamId\": \"0\",\n          \"studentTeam\": null,\n          \"tariffId\": \"-0\",\n          \"tariff\": null,\n          \"purchaseDate\": \"2006-01-12T01:58:26.919Z\",\n          \"isActive\": true\n        },\n        {\n          \"subscriptionId\": \"-391484561\",\n          \"studentTeamId\": \"6261411081\",\n          \"studentTeam\": null,\n          \"tariffId\": \"-0\",\n          \"tariff\": null,\n          \"purchaseDate\": \"2015-07-20T16:47:57.396Z\",\n          \"isActive\": true\n        }\n      ]\n    },\n    {\n      \"studentTeamId\": \"-0\",\n      \"studentId\": \"0\",\n      \"student\": null,\n      \"teamId\": \"-250741300\",\n      \"team\": null,\n      \"subscriptions\": [\n        {\n          \"subscriptionId\": \"38959929\",\n          \"studentTeamId\": \"-9209\",\n          \"studentTeam\": null,\n          \"tariffId\": \"-60324378\",\n          \"tariff\": null,\n          \"purchaseDate\": \"1961-05-20T18:23:21.021Z\",\n          \"isActive\": true\n        },\n        {\n          \"subscriptionId\": \"-56485561901\",\n          \"studentTeamId\": \"-0\",\n          \"studentTeam\": null,\n          \"tariffId\": \"-0\",\n          \"tariff\": null,\n          \"purchaseDate\": \"1967-09-14T16:20:13.888Z\",\n          \"isActive\": false\n        }\n      ]\n    }\n  ]\n}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Subscriptions",
+          "item": [
+            {
+              "name": "{id}",
+              "item": [
+                {
+                  "name": "/api/Subscriptions/:id",
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/Subscriptions/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "Subscriptions",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id",
+                          "value": "1"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "text/plain"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/Subscriptions/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "Subscriptions",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id",
+                              "value": "0"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n  \"subscriptionId\": \"5836\",\n  \"studentTeamId\": \"0\",\n  \"studentTeam\": null,\n  \"tariffId\": \"-0\",\n  \"tariff\": null,\n  \"purchaseDate\": \"1967-02-18T14:44:33.785Z\",\n  \"isActive\": true\n}"
+                    }
+                  ]
+                },
+                {
+                  "name": "/api/Subscriptions/:id",
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"subscriptionId\": \"5836\",\n  \"studentTeamId\": \"0\",\n  \"studentTeam\": null,\n  \"tariffId\": \"-0\",\n  \"tariff\": null,\n  \"purchaseDate\": \"1967-02-18T14:44:33.785Z\",\n  \"isActive\": true\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/Subscriptions/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "Subscriptions",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id",
+                          "value": "0"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"subscriptionId\": \"5836\",\n  \"studentTeamId\": \"0\",\n  \"studentTeam\": null,\n  \"tariffId\": \"-0\",\n  \"tariff\": null,\n  \"purchaseDate\": \"1967-02-18T14:44:33.785Z\",\n  \"isActive\": true\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/Subscriptions/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "Subscriptions",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id",
+                              "value": "0"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "body": ""
+                    }
+                  ]
+                },
+                {
+                  "name": "/api/Subscriptions/:id",
+                  "request": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/Subscriptions/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "Subscriptions",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id",
+                          "value": "0"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/Subscriptions/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "Subscriptions",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id",
+                              "value": "0"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "body": ""
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "active-details",
+              "item": [
+                {
+                  "name": "/api/Subscriptions/active-details",
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/Subscriptions/active-details",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "Subscriptions",
+                        "active-details"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "text/plain"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/Subscriptions/active-details",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "Subscriptions",
+                            "active-details"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "[]"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "expired",
+              "item": [
+                {
+                  "name": "/api/Subscriptions/expired",
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/Subscriptions/expired",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "Subscriptions",
+                        "expired"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "text/plain"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/Subscriptions/expired",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "Subscriptions",
+                            "expired"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "[]"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "/api/Subscriptions",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/Subscriptions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "Subscriptions"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/Subscriptions",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "Subscriptions"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "[\n  {\n    \"subscriptionId\": \"0\",\n    \"studentTeamId\": \"0\",\n    \"studentTeam\": null,\n    \"tariffId\": \"-7254732262\",\n    \"tariff\": null,\n    \"purchaseDate\": \"2016-04-21T08:28:18.420Z\",\n    \"isActive\": false\n  },\n  {\n    \"subscriptionId\": \"-0\",\n    \"studentTeamId\": \"4415545935\",\n    \"studentTeam\": null,\n    \"tariffId\": \"272\",\n    \"tariff\": null,\n    \"purchaseDate\": \"1987-09-26T05:18:42.993Z\",\n    \"isActive\": true\n  }\n]"
+                }
+              ]
+            },
+            {
+              "name": "/api/Subscriptions",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"subscriptionId\": \"5836\",\n  \"studentTeamId\": \"0\",\n  \"studentTeam\": null,\n  \"tariffId\": \"-0\",\n  \"tariff\": null,\n  \"purchaseDate\": \"1967-02-18T14:44:33.785Z\",\n  \"isActive\": true\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/Subscriptions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "Subscriptions"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"subscriptionId\": \"5836\",\n  \"studentTeamId\": \"0\",\n  \"studentTeam\": null,\n  \"tariffId\": \"-0\",\n  \"tariff\": null,\n  \"purchaseDate\": \"1967-02-18T14:44:33.785Z\",\n  \"isActive\": true\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/Subscriptions",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "Subscriptions"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n  \"subscriptionId\": \"5836\",\n  \"studentTeamId\": \"0\",\n  \"studentTeam\": null,\n  \"tariffId\": \"-0\",\n  \"tariff\": null,\n  \"purchaseDate\": \"1967-02-18T14:44:33.785Z\",\n  \"isActive\": true\n}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Teams",
+          "item": [
+            {
+              "name": "{id}",
+              "item": [
+                {
+                  "name": "students",
+                  "item": [
+                    {
+                      "name": "/api/Teams/:id/students",
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "text/plain"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/Teams/:id/students",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "Teams",
+                            ":id",
+                            "students"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id",
+                              "value": "0"
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "text/plain"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/Teams/:id/students",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "Teams",
+                                ":id",
+                                "students"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "id",
+                                  "value": "0"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "body": "[]"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "/api/Teams/:id",
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/Teams/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "Teams",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id",
+                          "value": "0"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "text/plain"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/Teams/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "Teams",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id",
+                              "value": "0"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n  \"teamId\": \"0\",\n  \"name\": \"string\",\n  \"teacherId\": \"0\",\n  \"teacher\": null,\n  \"minAge\": \"-0\",\n  \"maxAge\": \"-0\",\n  \"maxStudents\": \"0\",\n  \"studentTeams\": [\n    {\n      \"value\": \"<Circular reference to #/components/schemas/StudentTeam detected>\"\n    },\n    {\n      \"value\": \"<Circular reference to #/components/schemas/StudentTeam detected>\"\n    }\n  ]\n}"
+                    }
+                  ]
+                },
+                {
+                  "name": "/api/Teams/:id",
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"teamId\": \"0\",\n  \"name\": \"string\",\n  \"teacherId\": \"0\",\n  \"teacher\": null,\n  \"minAge\": \"-0\",\n  \"maxAge\": \"-0\",\n  \"maxStudents\": \"0\",\n  \"studentTeams\": [\n    {\n      \"value\": \"<Circular reference to #/components/schemas/StudentTeam detected>\"\n    },\n    {\n      \"value\": \"<Circular reference to #/components/schemas/StudentTeam detected>\"\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/Teams/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "Teams",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id",
+                          "value": "0"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"teamId\": \"0\",\n  \"name\": \"string\",\n  \"teacherId\": \"0\",\n  \"teacher\": null,\n  \"minAge\": \"-0\",\n  \"maxAge\": \"-0\",\n  \"maxStudents\": \"0\",\n  \"studentTeams\": [\n    {\n      \"value\": \"<Circular reference to #/components/schemas/StudentTeam detected>\"\n    },\n    {\n      \"value\": \"<Circular reference to #/components/schemas/StudentTeam detected>\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/Teams/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "Teams",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id",
+                              "value": "0"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "body": ""
+                    }
+                  ]
+                },
+                {
+                  "name": "/api/Teams/:id",
+                  "request": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/Teams/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "Teams",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "id",
+                          "value": "0"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/Teams/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "Teams",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id",
+                              "value": "0"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "body": ""
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "available",
+              "item": [
+                {
+                  "name": "/api/Teams/available",
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/Teams/available",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "Teams",
+                        "available"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "text/plain"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/Teams/available",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "Teams",
+                            "available"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "[]"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "/api/Teams",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/Teams",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "Teams"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/Teams",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "Teams"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "[\n  {\n    \"teamId\": \"-5504848\",\n    \"name\": \"string\",\n    \"teacherId\": \"0\",\n    \"teacher\": null,\n    \"minAge\": \"-0\",\n    \"maxAge\": \"0\",\n    \"maxStudents\": \"-0\",\n    \"studentTeams\": [\n      {\n        \"value\": \"<Circular reference to #/components/schemas/StudentTeam detected>\"\n      },\n      {\n        \"value\": \"<Circular reference to #/components/schemas/StudentTeam detected>\"\n      }\n    ]\n  },\n  {\n    \"teamId\": \"-0\",\n    \"name\": \"string\",\n    \"teacherId\": \"-0\",\n    \"teacher\": null,\n    \"minAge\": \"-0\",\n    \"maxAge\": \"-0\",\n    \"maxStudents\": \"-2403127550\",\n    \"studentTeams\": [\n      {\n        \"value\": \"<Circular reference to #/components/schemas/StudentTeam detected>\"\n      },\n      {\n        \"value\": \"<Circular reference to #/components/schemas/StudentTeam detected>\"\n      }\n    ]\n  }\n]"
+                }
+              ]
+            },
+            {
+              "name": "/api/Teams",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/plain"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Современные танцы\",\n  \"teacherId\": 1,\n  \"minAge\": 12,\n  \"maxAge\": 18,\n  \"maxStudents\": 20\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/Teams",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "Teams"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "text/plain"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"teamId\": \"0\",\n  \"name\": \"string\",\n  \"teacherId\": \"0\",\n  \"teacher\": null,\n  \"minAge\": \"-0\",\n  \"maxAge\": \"-0\",\n  \"maxStudents\": \"0\",\n  \"studentTeams\": [\n    {\n      \"value\": \"<Circular reference to #/components/schemas/StudentTeam detected>\"\n    },\n    {\n      \"value\": \"<Circular reference to #/components/schemas/StudentTeam detected>\"\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/Teams",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "Teams"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n  \"teamId\": \"0\",\n  \"name\": \"string\",\n  \"teacherId\": \"0\",\n  \"teacher\": null,\n  \"minAge\": \"-0\",\n  \"maxAge\": \"-0\",\n  \"maxStudents\": \"0\",\n  \"studentTeams\": [\n    {\n      \"value\": \"<Circular reference to #/components/schemas/StudentTeam detected>\"\n    },\n    {\n      \"value\": \"<Circular reference to #/components/schemas/StudentTeam detected>\"\n    }\n  ]\n}"
+                }
+              ]
+            },
+            {
+              "name": "New Request",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": ""
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://localhost:7029/"
+    },
+    {
+      "key": "token",
+      "value": ""
+    },
+    {
+      "key": "json_web_token_09c9",
+      "secret": true
+    },
+    {
+      "key": "json_web_token_0tdw",
+      "secret": true
+    }
+  ]
+}
