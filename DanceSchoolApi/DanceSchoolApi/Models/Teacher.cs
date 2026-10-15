@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
 
 namespace DanceSchoolApi.Models
 {
@@ -7,12 +9,23 @@ namespace DanceSchoolApi.Models
         public int TeacherId { get; set; }
         public string FirstName { get; set; } = string.Empty;
         public string LastName { get; set; } = string.Empty;
-        public int Age { get; set; }
+        public string MiddleName { get; set; } = string.Empty;
+        public DateOnly DateOfBirth { get; set; }
         public string Style { get; set; } = string.Empty;
         public decimal Rating { get; set; }
 
         public ICollection<Team> Teams { get; set; } = new List<Team>();
 
-        public string GetFullName() => $"{FirstName} {LastName}";
+        [NotMapped]
+        public int Age => GetAge(DateOnly.FromDateTime(DateTime.Today));
+
+        public string GetFullName() => string.Join(" ",
+            new[] { LastName, FirstName, MiddleName }.Where(part => !string.IsNullOrWhiteSpace(part)));
+
+        public int GetAge(DateOnly onDate)
+        {
+            var age = onDate.Year - DateOfBirth.Year;
+            return DateOfBirth.AddYears(age) > onDate ? age - 1 : age;
+        }
     }
 }

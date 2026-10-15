@@ -1,0 +1,8 @@
+**/bin/
+**/obj/
+.vs/
+artifacts/
+*.user
+DanceSchoolApi/appsettings.Development.json
+DanceSchoolApi/appsettings.Production.json
+

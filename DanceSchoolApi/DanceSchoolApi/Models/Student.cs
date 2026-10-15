@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 
 namespace DanceSchoolApi.Models
@@ -8,30 +10,25 @@ namespace DanceSchoolApi.Models
         public int StudentId { get; set; }
         public string FirstName { get; set; } = string.Empty;
         public string LastName { get; set; } = string.Empty;
-        public int Age { get; set; }
+        public string MiddleName { get; set; } = string.Empty;
+        public DateOnly DateOfBirth { get; set; }
+
+        [MaxLength(20)]
         public string Phone { get; set; } = string.Empty;
 
-        public ICollection<StudentTeam> StudentTeams { get; set; } = new List<StudentTeam>();
+        public ICollection<Subscription> Subscriptions { get; set; } = new List<Subscription>();
 
-        public string GetFullName() => $"{FirstName} {LastName}";
+        [NotMapped]
+        public int Age => GetAge(DateOnly.FromDateTime(DateTime.Today));
 
-        // подходит ли ученик команде по возрастным ограничениям
-        public bool IsEligibleForTeam(Team team)
+        public string GetFullName() => string.Join(" ",
+            new[] { LastName, FirstName, MiddleName }.Where(part => !string.IsNullOrWhiteSpace(part)));
+
+        public int GetAge(DateOnly onDate)
         {
-            return Age >= team.MinAge && Age <= team.MaxAge;
+            var age = onDate.Year - DateOfBirth.Year;
+            return DateOfBirth.AddYears(age) > onDate ? age - 1 : age;
         }
 
-        // сколько активных абонементов у ученика прямо сейчас
-        public int GetActiveSubscriptionsCount()
-        {
-            return StudentTeams
-                .SelectMany(st => st.Subscriptions)
-                .Count(s => s.IsActive && !s.IsExpired());
-        }
-
-        public bool HasActiveSubscription() => GetActiveSubscriptionsCount() > 0;
-
-        // в скольких командах сейчас состоит ученик
-        public int GetTeamsCount() => StudentTeams.Select(st => st.TeamId).Distinct().Count();
     }
 }

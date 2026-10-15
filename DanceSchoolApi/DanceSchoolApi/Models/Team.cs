@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 
 namespace DanceSchoolApi.Models
 {
@@ -14,46 +14,8 @@ namespace DanceSchoolApi.Models
         public int MaxAge { get; set; }
         public int MaxStudents { get; set; }
 
-        public ICollection<StudentTeam> StudentTeams { get; set; } = new List<StudentTeam>();
+        public ICollection<Subscription> Subscriptions { get; set; } = new List<Subscription>();
 
-        // есть ли свободные места в команде
-        public bool HasAvailableSlots() => StudentTeams.Count < MaxStudents;
-
-        public int GetCurrentStudentsCount() => StudentTeams.Count;
-
-        public int GetFreeSlotsCount() => MaxStudents - StudentTeams.Count;
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="student"></param>
-        /// <param name="error"></param>
-        /// <returns></returns>
-        // попытка записать ученика с проверкой возраста и мест.
-        // Возвращает false и текст ошибки, если запись невозможна.
-        public bool TryEnrollStudent(Student student, out string error)
-        {
-            if (!HasAvailableSlots())
-            {
-                error = "В команде нет свободных мест.";
-                return false;
-            }
-
-            if (!student.IsEligibleForTeam(this))
-            {
-                error = $"Ученик не подходит по возрасту (нужно {MinAge}-{MaxAge}).";
-                return false;
-            }
-
-            StudentTeams.Add(new StudentTeam
-            {
-                StudentId = student.StudentId,
-                Student = student,
-                TeamId = TeamId,
-                Team = this
-            });
-
-            error = string.Empty;
-            return true;
-        }
+        public bool IsAgeAllowed(int age) => age >= MinAge && age <= MaxAge;
     }
 }

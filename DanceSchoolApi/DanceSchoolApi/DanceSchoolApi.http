@@ -1,6 +1,0 @@
-@DanceSchoolApi_HostAddress = http://localhost:5280
-
-GET {{DanceSchoolApi_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

@@ -1,38 +1,67 @@
-﻿using System;
+using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DanceSchoolApi.Models
 {
     public class Subscription
     {
+        private Subscription()
+        {
+        }
+
+        public Subscription(int studentId, int teamId, int tariffId, DateOnly purchaseDate, int durationDays)
+        {
+            if (durationDays <= 0)
+                throw new ArgumentOutOfRangeException(nameof(durationDays));
+
+            StudentId = studentId;
+            TeamId = teamId;
+            TariffId = tariffId;
+            PurchaseDate = purchaseDate;
+            EndDate = purchaseDate.AddDays(durationDays);
+        }
+
         public int SubscriptionId { get; set; }
 
-        public int StudentTeamId { get; set; }
-        public StudentTeam? StudentTeam { get; set; }
+        public int StudentId { get; private set; }
+        public Student Student { get; private set; } = null!;
 
-        public int TariffId { get; set; }
-        public Tariff? Tariff { get; set; }
+        public int TeamId { get; private set; }
+        public Team Team { get; private set; } = null!;
 
-        public DateTime PurchaseDate { get; set; } = DateTime.Now;
-        public bool IsActive => DateTime.Now > ExpirationDate;
+        public int TariffId { get; private set; }
+        public Tariff Tariff { get; private set; } = null!;
 
-        //дата окончания действия абонемента (зависит от тарифа)
-        public DateTime ExpirationDate { get; set; }
+        public DateOnly PurchaseDate { get; private set; }
 
-        /*
+        public DateOnly EndDate { get; private set; }
+        public bool IsCancelled { get; private set; } = false;
+
+        [NotMapped]
+        public bool IsActiveNow => IsActiveOn(DateOnly.FromDateTime(DateTime.Today));
+
+        [NotMapped]
+        public bool IsExpiredByTime => !IsCancelled && EndDate <= DateOnly.FromDateTime(DateTime.Today);
+
+        [NotMapped]
+        public int DaysLeft => GetDaysLeft(DateOnly.FromDateTime(DateTime.Today));
+
+        public bool IsActiveOn(DateOnly date) => !IsCancelled && PurchaseDate <= date && date < EndDate;
+
+        public int GetDaysLeft(DateOnly date) => IsActiveOn(date) ? EndDate.DayNumber - date.DayNumber : 0;
+
+        public void Cancel(DateOnly? currentDate = null)
         {
-            if (Tariff == null)
-                throw new InvalidOperationException("Тариф не загружен (используйте Include(Tariff) в запросе).");
-            //к дате покупки прибавляется duration
-            return PurchaseDate.AddDays(Tariff.DurationDays);
-        }
-        */
-        //сбрасывает дату покупки и делает активным 
-        public void Renew()
-        {
-            PurchaseDate = DateTime.Now;
-        }
+            var today = currentDate ?? DateOnly.FromDateTime(DateTime.Today);
 
-        public int DaysLeft => (ExpirationDate - DateTime.Now).Days > 0 ? (ExpirationDate - DateTime.Now).Days : 0;
-        
+            if (IsCancelled)
+                throw new InvalidOperationException("Абонемент уже отменён; восстановление невозможно.");
+
+            if (!IsActiveOn(today))
+                throw new InvalidOperationException("Досрочно отменить можно только действующий абонемент.");
+
+            EndDate = today;
+            IsCancelled = true;
+        }
     }
 }

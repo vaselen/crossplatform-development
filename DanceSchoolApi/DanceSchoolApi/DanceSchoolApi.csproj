@@ -9,16 +9,26 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="10.0.12" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.12" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.12">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="10.0.12">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.12" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="10.0.3" />
     <PackageReference Include="Scalar.AspNetCore" Version="2.17.8" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="appsettings.Development.json" CopyToPublishDirectory="Never" />
+    <Content Update="appsettings.*.example.json" CopyToOutputDirectory="Never" CopyToPublishDirectory="Never" />
+    <None Update="**/*.http" CopyToPublishDirectory="Never" />
+  </ItemGroup>
+
+  <!-- Публикация в папку исходников может удалить проект при очистке назначения. -->
+  <Target Name="ValidatePublishDirectory" BeforeTargets="PrepareForPublish;Publish;FileSystemPublish" Condition="'$(PublishDir)' != ''">
+    <PropertyGroup>
+      <_PublishOutputPath>$([System.IO.Path]::GetFullPath('$(PublishDir)\'))</_PublishOutputPath>
+      <_ProjectSourcePath>$([System.IO.Path]::GetFullPath('$(MSBuildProjectDirectory)\'))</_ProjectSourcePath>
+      <_SolutionSourcePath>$([System.IO.Path]::GetFullPath('$(MSBuildProjectDirectory)\..\'))</_SolutionSourcePath>
+    </PropertyGroup>
+    <Error Condition="'$(_PublishOutputPath)' == '$(_ProjectSourcePath)' Or '$(_PublishOutputPath)' == '$(_SolutionSourcePath)'"
+           Text="Нельзя публиковать в папку проекта или решения. Выберите отдельную папку, например artifacts/release." />
+  </Target>
 
 </Project>
