@@ -1,4 +1,3 @@
-using System.Security.Cryptography;
 using DanceSchoolApi.Auth;
 using DanceSchoolApi.Data;
 using DanceSchoolApi.Infrastructure;
@@ -46,9 +45,6 @@ public partial class Program
             options.UseNpgsql(connection));
 
         var auth = builder.Configuration.GetSection("Jwt").Get<AuthOptions>() ?? new AuthOptions();
-        var temporaryKey = builder.Environment.IsDevelopment() && string.IsNullOrWhiteSpace(auth.SigningKey);
-        if (temporaryKey)
-            auth.SigningKey = Convert.ToBase64String(RandomNumberGenerator.GetBytes(64));
         auth.Validate();
         builder.Services.AddSingleton(auth);
         builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
@@ -82,8 +78,6 @@ public partial class Program
 
         var app = builder.Build();
         app.UseExceptionHandler();
-        if (temporaryKey)
-            app.Logger.LogWarning("Используется временный ключ JWT. После перезапуска потребуется вход. Для постоянного ключа заполните Jwt:SigningKey в appsettings.Development.json.");
         if (app.Environment.IsDevelopment())
         {
             app.MapOpenApi().AllowAnonymous();

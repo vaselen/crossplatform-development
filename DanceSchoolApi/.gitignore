@@ -1,8 +1,12 @@
 **/bin/
 **/obj/
 .vs/
-artifacts/
 *.user
-DanceSchoolApi/appsettings.Development.json
-DanceSchoolApi/appsettings.Production.json
+DanceSchoolApi/appsettings.json
+
+!/artifacts/
+/artifacts/*
+!/artifacts/release/
+!/artifacts/DanceSchoolApi.postman_collection.json
+!DanceSchoolApi/Properties/PublishProfiles/FolderProfile.pubxml
 

@@ -1,0 +1,1632 @@
+{
+  "info": {
+    "name": "DanceSchoolApi — аккаунты, роли и абонементы",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Готовые примеры для заполненной базы DanceSchoolProduction. Сначала выполните Вход admin, Вход student и Вход teacher: токены сохранятся автоматически. Body и настоящие ID уже заполнены. Переменные Environment с теми же именами имеют приоритет: удалите устаревшие значения или обновите их. Создание записей сохраняет их ID. Для покупки администратором выбран Илья и команда Контемпорари; для ученика — Анна и та же команда: у них пока нет действующих абонементов в эту команду. CRUD проверяйте на новых записях в порядке Создать → Получить → Изменить → Удалить. У записей с историей или связями удаление может вернуть 409. Регистрация создаёт отдельного ученика и переключает studentToken на него; повторный запрос с тем же логином вернёт 409. После смены пароля требуется новый вход. Выполняйте запросы выборочно: отмена, удаление и архивирование меняют базу."
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://localhost:7029",
+      "type": "string"
+    },
+    {
+      "key": "adminLogin",
+      "value": "admin",
+      "type": "string"
+    },
+    {
+      "key": "adminPassword",
+      "value": "Admin123!",
+      "type": "string"
+    },
+    {
+      "key": "adminToken",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "studentLogin",
+      "value": "student_demo",
+      "type": "string"
+    },
+    {
+      "key": "studentPassword",
+      "value": "Student123!",
+      "type": "string"
+    },
+    {
+      "key": "studentToken",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "teacherLogin",
+      "value": "teacher_demo",
+      "type": "string"
+    },
+    {
+      "key": "teacherPassword",
+      "value": "Teacher123!",
+      "type": "string"
+    },
+    {
+      "key": "teacherToken",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "studentId",
+      "value": "1",
+      "type": "string"
+    },
+    {
+      "key": "teacherId",
+      "value": "1",
+      "type": "string"
+    },
+    {
+      "key": "teamId",
+      "value": "1",
+      "type": "string"
+    },
+    {
+      "key": "tariffId",
+      "value": "1",
+      "type": "string"
+    },
+    {
+      "key": "subscriptionId",
+      "value": "1",
+      "type": "string"
+    },
+    {
+      "key": "accountId",
+      "value": "3",
+      "type": "string"
+    },
+    {
+      "key": "studentSubscriptionId",
+      "value": "1",
+      "type": "string"
+    },
+    {
+      "key": "teacherTeamId",
+      "value": "1",
+      "type": "string"
+    },
+    {
+      "key": "adminPurchaseStudentId",
+      "value": "4",
+      "type": "string"
+    },
+    {
+      "key": "adminPurchaseTeamId",
+      "value": "2",
+      "type": "string"
+    },
+    {
+      "key": "studentPurchaseTeamId",
+      "value": "2",
+      "type": "string"
+    },
+    {
+      "key": "registrationLogin",
+      "value": "student_new",
+      "type": "string"
+    },
+    {
+      "key": "registrationPassword",
+      "value": "StudentNew123!",
+      "type": "string"
+    },
+    {
+      "key": "newAccountLogin",
+      "value": "teacher_extra",
+      "type": "string"
+    },
+    {
+      "key": "newAccountPassword",
+      "value": "TeacherExtra123!",
+      "type": "string"
+    },
+    {
+      "key": "newAccountTeacherId",
+      "value": "4",
+      "type": "string"
+    },
+    {
+      "key": "accountLogin",
+      "value": "teacher_demo",
+      "type": "string"
+    },
+    {
+      "key": "accountTeacherId",
+      "value": "1",
+      "type": "string"
+    },
+    {
+      "key": "currentToken",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "currentRole",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "currentPassword",
+      "value": "Admin123!",
+      "type": "string"
+    },
+    {
+      "key": "newPassword",
+      "value": "NewPassword123!",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Публичный каталог",
+      "item": [
+        {
+          "name": "Список teams",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/api/catalog/teams",
+            "auth": {
+              "type": "noauth"
+            }
+          }
+        },
+        {
+          "name": "Один teams",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/api/catalog/teams/{{teamId}}",
+            "auth": {
+              "type": "noauth"
+            }
+          }
+        },
+        {
+          "name": "Список teachers",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/api/catalog/teachers",
+            "auth": {
+              "type": "noauth"
+            }
+          }
+        },
+        {
+          "name": "Один teachers",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/api/catalog/teachers/{{teacherId}}",
+            "auth": {
+              "type": "noauth"
+            }
+          }
+        },
+        {
+          "name": "Список tariffs",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/api/catalog/tariffs",
+            "auth": {
+              "type": "noauth"
+            }
+          }
+        },
+        {
+          "name": "Один tariffs",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/api/catalog/tariffs/{{tariffId}}",
+            "auth": {
+              "type": "noauth"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Авторизация",
+      "item": [
+        {
+          "name": "Регистрация ученика",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/auth/register",
+            "auth": {
+              "type": "noauth"
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"Софья\",\n  \"lastName\": \"Миронова\",\n  \"middleName\": \"Алексеевна\",\n  \"dateOfBirth\": \"2006-10-01\",\n  \"phone\": \"+79000000006\",\n  \"login\": \"{{registrationLogin}}\",\n  \"password\": \"{{registrationPassword}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "description": "Создаёт нового ученика student_new и его аккаунт; studentToken и данные входа переключатся на него. Для уже созданной Анны используйте Вход student. После регистрации оформите новый абонемент перед запросом его деталей. Повторная регистрация того же логина вернёт 409."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "if (pm.response.code === 200 || pm.response.code === 201) {",
+                  "  const data = pm.response.json();",
+                  "  if (data.account && data.token) {",
+                  "    const role = data.account.role.toLowerCase();",
+                  "    const sent = JSON.parse(pm.variables.replaceIn(pm.request.body.raw));",
+                  "    pm.collectionVariables.set(role + 'Token', data.token);",
+                  "    pm.collectionVariables.set(role + 'Login', sent.login);",
+                  "    pm.collectionVariables.set(role + 'Password', sent.password);",
+                  "    pm.collectionVariables.set('currentToken', data.token);",
+                  "    pm.collectionVariables.set('currentRole', role);",
+                  "    pm.collectionVariables.set('currentPassword', sent.password);",
+                  "    if (data.account.studentId) pm.collectionVariables.set('studentId', data.account.studentId);",
+                  "    if (data.account.teacherId) pm.collectionVariables.set('teacherId', data.account.teacherId);",
+                  "  }",
+                  "}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Вход admin",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/auth/login",
+            "auth": {
+              "type": "noauth"
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"login\": \"{{adminLogin}}\",\n  \"password\": \"{{adminPassword}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "description": "Готовые данные входа уже указаны в переменных. После успешного ответа токен роли, currentToken и currentPassword сохраняются автоматически."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "if (pm.response.code === 200 || pm.response.code === 201) {",
+                  "  const data = pm.response.json();",
+                  "  if (data.account && data.token) {",
+                  "    const role = data.account.role.toLowerCase();",
+                  "    const sent = JSON.parse(pm.variables.replaceIn(pm.request.body.raw));",
+                  "    pm.collectionVariables.set(role + 'Token', data.token);",
+                  "    pm.collectionVariables.set(role + 'Login', sent.login);",
+                  "    pm.collectionVariables.set(role + 'Password', sent.password);",
+                  "    pm.collectionVariables.set('currentToken', data.token);",
+                  "    pm.collectionVariables.set('currentRole', role);",
+                  "    pm.collectionVariables.set('currentPassword', sent.password);",
+                  "    if (data.account.studentId) pm.collectionVariables.set('studentId', data.account.studentId);",
+                  "    if (data.account.teacherId) pm.collectionVariables.set('teacherId', data.account.teacherId);",
+                  "  }",
+                  "}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Вход student",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/auth/login",
+            "auth": {
+              "type": "noauth"
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"login\": \"{{studentLogin}}\",\n  \"password\": \"{{studentPassword}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "description": "Готовые данные входа уже указаны в переменных. После успешного ответа токен роли, currentToken и currentPassword сохраняются автоматически."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "if (pm.response.code === 200 || pm.response.code === 201) {",
+                  "  const data = pm.response.json();",
+                  "  if (data.account && data.token) {",
+                  "    const role = data.account.role.toLowerCase();",
+                  "    const sent = JSON.parse(pm.variables.replaceIn(pm.request.body.raw));",
+                  "    pm.collectionVariables.set(role + 'Token', data.token);",
+                  "    pm.collectionVariables.set(role + 'Login', sent.login);",
+                  "    pm.collectionVariables.set(role + 'Password', sent.password);",
+                  "    pm.collectionVariables.set('currentToken', data.token);",
+                  "    pm.collectionVariables.set('currentRole', role);",
+                  "    pm.collectionVariables.set('currentPassword', sent.password);",
+                  "    if (data.account.studentId) pm.collectionVariables.set('studentId', data.account.studentId);",
+                  "    if (data.account.teacherId) pm.collectionVariables.set('teacherId', data.account.teacherId);",
+                  "  }",
+                  "}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Вход teacher",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/auth/login",
+            "auth": {
+              "type": "noauth"
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"login\": \"{{teacherLogin}}\",\n  \"password\": \"{{teacherPassword}}\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "description": "Готовые данные входа уже указаны в переменных. После успешного ответа токен роли, currentToken и currentPassword сохраняются автоматически."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "if (pm.response.code === 200 || pm.response.code === 201) {",
+                  "  const data = pm.response.json();",
+                  "  if (data.account && data.token) {",
+                  "    const role = data.account.role.toLowerCase();",
+                  "    const sent = JSON.parse(pm.variables.replaceIn(pm.request.body.raw));",
+                  "    pm.collectionVariables.set(role + 'Token', data.token);",
+                  "    pm.collectionVariables.set(role + 'Login', sent.login);",
+                  "    pm.collectionVariables.set(role + 'Password', sent.password);",
+                  "    pm.collectionVariables.set('currentToken', data.token);",
+                  "    pm.collectionVariables.set('currentRole', role);",
+                  "    pm.collectionVariables.set('currentPassword', sent.password);",
+                  "    if (data.account.studentId) pm.collectionVariables.set('studentId', data.account.studentId);",
+                  "    if (data.account.teacherId) pm.collectionVariables.set('teacherId', data.account.teacherId);",
+                  "  }",
+                  "}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Сменить свой пароль (после операции нужен новый вход)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/auth/change-password",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{studentToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"currentPassword\": \"{{studentPassword}}\",\n  \"newPassword\": \"New-local-example-123\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "description": "Меняет пароль аккаунта, выполнившего последний вход. Пример нового пароля — NewPassword123!. После 204 токен очищается, пароль роли обновляется в Variables. Выполните вход этой роли заново."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "if (pm.response.code === 204) {",
+                  "  const role = pm.collectionVariables.get('currentRole');",
+                  "  const sent = JSON.parse(pm.variables.replaceIn(pm.request.body.raw));",
+                  "  if (role) {",
+                  "    pm.collectionVariables.set(role + 'Password', sent.newPassword);",
+                  "    pm.collectionVariables.set(role + 'Token', '');",
+                  "  }",
+                  "  pm.collectionVariables.set('currentPassword', sent.newPassword);",
+                  "  pm.collectionVariables.set('currentToken', '');",
+                  "}"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Администратор",
+      "item": [
+        {
+          "name": "students",
+          "item": [
+            {
+              "name": "Создать",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": "{{baseUrl}}/api/admin/students",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{adminToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"firstName\": \"Кирилл\",\n  \"lastName\": \"Смирнов\",\n  \"middleName\": \"Павлович\",\n  \"dateOfBirth\": \"2007-05-20\",\n  \"phone\": \"+79000000005\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "description": "Body заполнен готовым примером. Сначала выполните вход соответствующей роли. Значения можно изменить перед отправкой."
+              },
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "if (pm.response.code >= 200 && pm.response.code < 300) {",
+                      "  const data = pm.response.json();",
+                      "  if (data.studentId) pm.collectionVariables.set('studentId', data.studentId);",
+                      "}"
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Список",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": "{{baseUrl}}/api/admin/students",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{adminToken}}",
+                      "type": "string"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "Получить",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": "{{baseUrl}}/api/admin/students/{{studentId}}",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{adminToken}}",
+                      "type": "string"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "Изменить",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": "{{baseUrl}}/api/admin/students/{{studentId}}",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{adminToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"firstName\": \"Кирилл\",\n  \"lastName\": \"Смирнов\",\n  \"middleName\": \"Павлович\",\n  \"dateOfBirth\": \"2007-05-20\",\n  \"phone\": \"+79000000105\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "description": "Body заполнен готовым примером. Сначала выполните вход соответствующей роли. Значения можно изменить перед отправкой."
+              }
+            },
+            {
+              "name": "Удалить (с учётом связей и истории)",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": "{{baseUrl}}/api/admin/students/{{studentId}}",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{adminToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "description": "Для проверки полного CRUD сначала создайте новую запись: её ID сохранится автоматически. Удаление используемой записи может вернуть 409 из-за истории, команды или связанного аккаунта. Удаление аккаунта сохраняет профиль."
+              }
+            }
+          ]
+        },
+        {
+          "name": "teachers",
+          "item": [
+            {
+              "name": "Создать",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": "{{baseUrl}}/api/admin/teachers",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{adminToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"firstName\": \"Нина\",\n  \"lastName\": \"Фёдорова\",\n  \"middleName\": \"Алексеевна\",\n  \"dateOfBirth\": \"1995-07-19\",\n  \"style\": \"Хаус\",\n  \"rating\": 4.7\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "description": "Body заполнен готовым примером. Сначала выполните вход соответствующей роли. Значения можно изменить перед отправкой."
+              },
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "if (pm.response.code >= 200 && pm.response.code < 300) {",
+                      "  const data = pm.response.json();",
+                      "  if (data.teacherId) pm.collectionVariables.set('teacherId', data.teacherId);",
+                      "}"
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Список",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": "{{baseUrl}}/api/admin/teachers",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{adminToken}}",
+                      "type": "string"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "Получить",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": "{{baseUrl}}/api/admin/teachers/{{teacherId}}",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{adminToken}}",
+                      "type": "string"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "Изменить",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": "{{baseUrl}}/api/admin/teachers/{{teacherId}}",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{adminToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"firstName\": \"Нина\",\n  \"lastName\": \"Фёдорова\",\n  \"middleName\": \"Алексеевна\",\n  \"dateOfBirth\": \"1995-07-19\",\n  \"style\": \"Хаус\",\n  \"rating\": 4.9\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "description": "Body заполнен готовым примером. Сначала выполните вход соответствующей роли. Значения можно изменить перед отправкой."
+              }
+            },
+            {
+              "name": "Удалить (с учётом связей и истории)",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": "{{baseUrl}}/api/admin/teachers/{{teacherId}}",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{adminToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "description": "Для проверки полного CRUD сначала создайте новую запись: её ID сохранится автоматически. Удаление используемой записи может вернуть 409 из-за истории, команды или связанного аккаунта. Удаление аккаунта сохраняет профиль."
+              }
+            }
+          ]
+        },
+        {
+          "name": "teams",
+          "item": [
+            {
+              "name": "Создать",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": "{{baseUrl}}/api/admin/teams",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{adminToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Хип-хоп: вечерняя группа\",\n  \"teacherId\": {{teacherId}},\n  \"minAge\": 14,\n  \"maxAge\": 25,\n  \"maxStudents\": 10\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "description": "Body заполнен готовым примером. Сначала выполните вход соответствующей роли. Значения можно изменить перед отправкой."
+              },
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "if (pm.response.code >= 200 && pm.response.code < 300) {",
+                      "  const data = pm.response.json();",
+                      "  if (data.teamId) pm.collectionVariables.set('teamId', data.teamId);",
+                      "}"
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Список",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": "{{baseUrl}}/api/admin/teams",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{adminToken}}",
+                      "type": "string"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "Получить",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": "{{baseUrl}}/api/admin/teams/{{teamId}}",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{adminToken}}",
+                      "type": "string"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "Изменить",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": "{{baseUrl}}/api/admin/teams/{{teamId}}",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{adminToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Хип-хоп: вечерняя группа\",\n  \"teacherId\": {{teacherId}},\n  \"minAge\": 14,\n  \"maxAge\": 25,\n  \"maxStudents\": 12\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "description": "Body заполнен готовым примером. Сначала выполните вход соответствующей роли. Значения можно изменить перед отправкой."
+              }
+            },
+            {
+              "name": "Удалить (с учётом связей и истории)",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": "{{baseUrl}}/api/admin/teams/{{teamId}}",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{adminToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "description": "Для проверки полного CRUD сначала создайте новую запись: её ID сохранится автоматически. Удаление используемой записи может вернуть 409 из-за истории, команды или связанного аккаунта. Удаление аккаунта сохраняет профиль."
+              }
+            }
+          ]
+        },
+        {
+          "name": "accounts",
+          "item": [
+            {
+              "name": "Создать",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": "{{baseUrl}}/api/admin/accounts",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{adminToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"login\": \"{{newAccountLogin}}\",\n  \"password\": \"{{newAccountPassword}}\",\n  \"role\": \"Teacher\",\n  \"teacherId\": {{newAccountTeacherId}}\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "description": "Создаёт teacher_extra для Максима Белова: его профиль уже есть, аккаунта пока нет. Повторное создание того же логина или аккаунта для того же профиля вернёт 409. Для другого преподавателя измените newAccountTeacherId."
+              },
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "if (pm.response.code === 201) {",
+                      "  const data = pm.response.json();",
+                      "  pm.collectionVariables.set('accountId', data.userId);",
+                      "  pm.collectionVariables.set('accountLogin', data.login);",
+                      "  pm.collectionVariables.set('accountTeacherId', data.teacherId);",
+                      "}"
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Список",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": "{{baseUrl}}/api/admin/accounts",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{adminToken}}",
+                      "type": "string"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "Получить",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": "{{baseUrl}}/api/admin/accounts/{{accountId}}",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{adminToken}}",
+                      "type": "string"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "Изменить",
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": "{{baseUrl}}/api/admin/accounts/{{accountId}}",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{adminToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"login\": \"{{accountLogin}}\",\n  \"role\": \"Teacher\",\n  \"teacherId\": {{accountTeacherId}}\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "description": "Body заполнен готовым примером. Сначала выполните вход соответствующей роли. Значения можно изменить перед отправкой."
+              }
+            },
+            {
+              "name": "Удалить (с учётом связей и истории)",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": "{{baseUrl}}/api/admin/accounts/{{accountId}}",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{adminToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "description": "Для проверки полного CRUD сначала создайте новую запись: её ID сохранится автоматически. Удаление используемой записи может вернуть 409 из-за истории, команды или связанного аккаунта. Удаление аккаунта сохраняет профиль."
+              }
+            }
+          ]
+        },
+        {
+          "name": "tariffs",
+          "item": [
+            {
+              "name": "Создать новый тариф",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": "{{baseUrl}}/api/admin/tariffs",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{adminToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"durationDays\": 90,\n  \"price\": 8100\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "description": "Body заполнен готовым примером. Сначала выполните вход соответствующей роли. Значения можно изменить перед отправкой."
+              },
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "if (pm.response.code >= 200 && pm.response.code < 300) {",
+                      "  const data = pm.response.json();",
+                      "  if (data.tariffId) pm.collectionVariables.set('tariffId', data.tariffId);",
+                      "}"
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Список с архивом",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": "{{baseUrl}}/api/admin/tariffs?includeArchive=true",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{adminToken}}",
+                      "type": "string"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "Получить",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": "{{baseUrl}}/api/admin/tariffs/{{tariffId}}",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{adminToken}}",
+                      "type": "string"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "Архивировать",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "url": "{{baseUrl}}/api/admin/tariffs/{{tariffId}}/archive",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{adminToken}}",
+                      "type": "string"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "Восстановить прежние условия",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "url": "{{baseUrl}}/api/admin/tariffs/{{tariffId}}/restore",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{adminToken}}",
+                      "type": "string"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "Удалить неиспользованный тариф",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": "{{baseUrl}}/api/admin/tariffs/{{tariffId}}",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{adminToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "description": "Для проверки полного CRUD сначала создайте новую запись: её ID сохранится автоматически. Удаление используемой записи может вернуть 409 из-за истории, команды или связанного аккаунта. Удаление аккаунта сохраняет профиль."
+              }
+            }
+          ]
+        },
+        {
+          "name": "subscriptions",
+          "item": [
+            {
+              "name": "Оформить выбранному ученику",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "url": "{{baseUrl}}/api/admin/subscriptions",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{adminToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"studentId\": {{adminPurchaseStudentId}},\n  \"teamId\": {{adminPurchaseTeamId}},\n  \"tariffId\": {{tariffId}}\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "description": "Готовый пример: Илья Кузнецов → Контемпорари, тариф 28 дней. Возраст подходит, действующего абонемента в эту команду пока нет. После покупки subscriptionId обновится. Повторная покупка без отмены вернёт 409. Тариф должен быть неархивным."
+              },
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "if (pm.response.code >= 200 && pm.response.code < 300) {",
+                      "  const data = pm.response.json();",
+                      "  if (data.subscriptionId) pm.collectionVariables.set('subscriptionId', data.subscriptionId);",
+                      "}"
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "name": "Список с фильтрами",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": "{{baseUrl}}/api/admin/subscriptions?teamId={{teamId}}&status=active",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{adminToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "description": "По умолчанию действующие абонементы команды teamId. Для всей истории уберите teamId и задайте status=all; доступны также expired и cancelled."
+              }
+            },
+            {
+              "name": "Детали",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": "{{baseUrl}}/api/admin/subscriptions/{{subscriptionId}}",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{adminToken}}",
+                      "type": "string"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "Отменить",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "url": "{{baseUrl}}/api/admin/subscriptions/{{subscriptionId}}/cancel",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{adminToken}}",
+                      "type": "string"
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "LINQ-запросы",
+          "item": [
+            {
+              "name": "Заполненность команд",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": "{{baseUrl}}/api/admin/teams",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{adminToken}}",
+                      "type": "string"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "Состав команды",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": "{{baseUrl}}/api/admin/teams/{{teamId}}/students",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{adminToken}}",
+                      "type": "string"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "Подбор учеников",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": "{{baseUrl}}/api/admin/teams/{{teamId}}/eligible-students",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{adminToken}}",
+                      "type": "string"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "name": "Команды ученика",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": "{{baseUrl}}/api/admin/students/{{studentId}}/teams",
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{adminToken}}",
+                      "type": "string"
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Ученик",
+      "item": [
+        {
+          "name": "Свой профиль",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/api/student/me",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{studentToken}}",
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Изменить телефон",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/student/me",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{studentToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"phone\": \"+79000000101\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "description": "Body заполнен готовым примером. Сначала выполните вход соответствующей роли. Значения можно изменить перед отправкой."
+          }
+        },
+        {
+          "name": "Свои команды",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/api/student/me/teams",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{studentToken}}",
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "История",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/api/student/me/subscriptions?status=all",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{studentToken}}",
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Детали своего абонемента",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/api/student/me/subscriptions/{{studentSubscriptionId}}",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{studentToken}}",
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Оформить себе",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/api/student/me/subscriptions",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{studentToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"teamId\": {{studentPurchaseTeamId}},\n  \"tariffId\": {{tariffId}}\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "description": "Готовый пример: Анна Соколова → Контемпорари, тариф 28 дней. В этой команде у Анны пока нет действующего абонемента. StudentId берётся из токена. После покупки studentSubscriptionId обновится; subscriptionId администратора останется прежним. Повторная покупка без отмены вернёт 409."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "if (pm.response.code === 201) {",
+                  "  const data = pm.response.json();",
+                  "  pm.collectionVariables.set('studentSubscriptionId', data.subscriptionId);",
+                  "}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Отменить свой абонемент",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": "{{baseUrl}}/api/student/me/subscriptions/{{studentSubscriptionId}}/cancel",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{studentToken}}",
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Преподаватель",
+      "item": [
+        {
+          "name": "Свой профиль",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/api/teacher/me",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{teacherToken}}",
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Свои команды",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/api/teacher/me/teams",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{teacherToken}}",
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Состав своей команды",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/api/teacher/teams/{{teacherTeamId}}/students",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{teacherToken}}",
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
